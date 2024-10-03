@@ -23,8 +23,8 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t your-username/your-repository-name:latest .
-        docker push your-username/your-repository-name:latest
+        docker-compose build
+        docker-compose push
 
     # - name: Deploy to server
     #   run: |
