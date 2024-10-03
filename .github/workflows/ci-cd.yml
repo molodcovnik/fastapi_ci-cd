@@ -52,7 +52,7 @@ jobs:
 
         - name: Deploy to server
           run: |
-            ssh -o StrictHostKeyChecking=no root@87.228.13.250 "docker pull molodcov/test_ci-cd:latest && docker-compose up -d"
+            ssh -o StrictHostKeyChecking=no root@87.228.13.250 "cd fastapi_ci-cd/ && docker pull molodcov/test_ci-cd:latest && docker-compose up -d"
   test:
     runs-on: ubuntu-latest
     steps:
