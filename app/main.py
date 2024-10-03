@@ -17,4 +17,4 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get("/hello/{name}")
 def hello_name(name: str):
-    return {"hello": name}
+    return {"hello": f'{name}...man'}
