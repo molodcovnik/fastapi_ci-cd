@@ -48,11 +48,11 @@ jobs:
             mkdir -p ~/.ssh
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
-            ssh-keyscan -H 87.228.13.250 >> ~/.ssh/known_hosts
+            ssh-keyscan -H ${{ secrets.HOST_IP }} >> ~/.ssh/known_hosts
 
         - name: Deploy to server
           run: |
-            ssh -o StrictHostKeyChecking=no root@87.228.13.250 "cd fastapi_ci-cd/ && docker pull molodcov/test_ci-cd:latest && docker-compose up -d"
+            ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST_IP }} "cd fastapi_ci-cd/ && docker pull ${{ secrets.DOCKER_USERNAME}}/${{ secrets.DOCKER_REPO}}:latest && docker-compose up -d"
   test:
     runs-on: ubuntu-latest
     steps:
